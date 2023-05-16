@@ -1,0 +1,54 @@
+//table for login 
+
+create table admin_login(
+user_name varchar(20) primary key,
+password varchar(20) not null check(length(password)>8));
+
+//table for user 
+
+create table patient(
+p_id int primary key AUTO_INCREMENT,
+p_name varchar(50) not null,
+p_phoneno bigint not null check(length(p_phoneno)=10),
+p_add varchar(100) not null,
+p_email varchar(50),
+p_idproof blob 
+);
+
+// table for doctor
+
+create table doctor(
+dr_id int primary key,
+dr_name varchar(50) not null,
+dr_spec varchar(50) not null,
+dr_contact bigint not null,
+dr_email varchar(50),
+hosp_name varchar(100) not null);
+
+
+//table for hospitals
+
+create table hospitals(
+hos_id int primary key,
+hosp_name varchar(50) not null,
+hos_add varchar(100) default 'pune',
+hos_contactNo bigint not null check(length(hos_contactNo)=10)
+);
+
+//table for appointments
+
+create table appointment(
+p_id int,
+app_no int not null,
+dr_id int,
+app_date date not null,
+app_shift varchar(20),
+health_issue varchar(500) 
+);
+
+//table for speciality
+
+create table speciality(
+spec_id int primary key,
+spec_name varchar(50) not null
+); 
